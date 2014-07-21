@@ -1,9 +1,11 @@
 package com.qfen.mobile.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.qfen.mobile.MainActivity;
 import com.qfen.mobile.R;
 
 public class AppStartActivity extends Activity {
@@ -17,9 +19,9 @@ public class AppStartActivity extends Activity {
 			
 			@Override
 			public void run() {
-//				Intent intent = null;
-//				intent = new Intent(AppStartActivity.this, MainActivity.class);
-//				startActivity(intent);
+				Intent intent = null;
+				intent = new Intent(AppStartActivity.this, MainActivity.class);
+				startActivity(intent);
 				AppStartActivity.this.finish();
 			}
 		}, 2000);
