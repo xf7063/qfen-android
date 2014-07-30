@@ -17,4 +17,17 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="sliding_menu_text">
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:textColor">#c9c9c9</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="sliding_right_menu_text" parent="sliding_menu_text">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/sliding_menu_height</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:paddingLeft">30dp</item>
+    </style>
 </resources>

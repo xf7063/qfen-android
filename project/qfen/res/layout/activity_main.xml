@@ -1,19 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="top"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.qfen.mobile.MainActivity" >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentTop="false"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<com.qfen.mobile.slidingmenu.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sliding="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slidingmenu"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    sliding:behindOffset="60dp"
+    sliding:fadeEnabled="true"
+    sliding:mode="left"
+    sliding:secondaryShadowDrawable="@drawable/sliding_shadow_right"
+    sliding:shadowDrawable="@drawable/sliding_shadow_left"
+    sliding:shadowWidth="10dp"
+    sliding:touchModeAbove="fullscreen"
+    sliding:touchModeBehind="margin" />
