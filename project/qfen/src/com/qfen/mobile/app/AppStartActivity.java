@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.qfen.mobile.MainActivity;
 import com.qfen.mobile.R;
+import com.qfen.mobile.activity.MainActivity;
 
 public class AppStartActivity extends Activity {
 
