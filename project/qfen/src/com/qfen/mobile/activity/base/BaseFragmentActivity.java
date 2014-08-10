@@ -11,9 +11,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View.OnClickListener;
 
 public class BaseFragmentActivity extends FragmentActivity {
-
-
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +43,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * é€?‡º
+	 * ï¿½?ï¿½ï¿½
 	 */
 	public void exitApp(final android.content.DialogInterface.OnClickListener listener ) {
 	

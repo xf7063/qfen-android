@@ -18,7 +18,7 @@ import com.qfen.mobile.slidingmenu.SlidingMenu;
 import com.qfen.mobile.ui.MainHallFragment;
 
 public class MainActivity extends BaseFragmentActivity {
-	private Fragment mCurFragment;
+	private Fragment mCurrentFragment;
 	public static SlidingMenu mSlidingMenu;
 	private Handler handler = new MyHandler(this);
 	private static class MyHandler extends Handler {
@@ -50,14 +50,17 @@ public class MainActivity extends BaseFragmentActivity {
 		
 
 		if (savedInstanceState != null) {
-			mCurFragment = getSupportFragmentManager().getFragment(savedInstanceState, "mCurContent");
+			mCurrentFragment = getSupportFragmentManager().getFragment(savedInstanceState, "mCurrentContent");
 		}
 	}
 
+	/**
+	 * 该方法你用见“http://www.cnblogs.com/hanyonglu/archive/2012/03/28/2420515.html”
+	 */
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		getSupportFragmentManager().putFragment(outState, "mCurContent", mCurFragment);
+		getSupportFragmentManager().putFragment(outState, "mCurrentContent", mCurrentFragment);
 	}
 	private void initViews() {
 		mSlidingMenu = (SlidingMenu) findViewById(R.id.slidingmenu);
@@ -73,7 +76,7 @@ public class MainActivity extends BaseFragmentActivity {
 			getSupportFragmentManager().beginTransaction().add(R.id.right_frame, new RightFragment(), RightFragment.class.getName()).commit();
 		}
 
-		if (mCurFragment != null) {
+		if (mCurrentFragment != null) {
 			postSwitchFragment();
 		}
 		mSlidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -107,8 +110,8 @@ public class MainActivity extends BaseFragmentActivity {
 				}
 			}
 			
-			if (mCurFragment != null && mCurFragment != userFragment) {
-				ft.hide(mCurFragment);
+			if (mCurrentFragment != null && mCurrentFragment != userFragment) {
+				ft.hide(mCurrentFragment);
 			}
 
 			if (!userFragment.isAdded() && isInit) {
@@ -120,7 +123,7 @@ public class MainActivity extends BaseFragmentActivity {
 			ft.commitAllowingStateLoss();
 
 //			mSlidingMenu.showContent();
-			mCurFragment = userFragment;
+			mCurrentFragment = userFragment;
 //			if (MainHallFragment.class.getName().equals(clazz.getName())) {
 //				mSlidingMenu.setMode(SlidingMenu.LEFT_RIGHT);
 //				if (!isInit) {
@@ -169,7 +172,7 @@ public class MainActivity extends BaseFragmentActivity {
 
 			@Override
 			public void run() {
-				switchCenterFragment(mCurFragment.getClass());
+				switchCenterFragment(mCurrentFragment.getClass());
 			}
 		}, 50);
 
@@ -205,5 +208,9 @@ public class MainActivity extends BaseFragmentActivity {
 				}
 			}
 		}, delayMillis);
+	}
+	
+	public SlidingMenu getSlidingMenu() {
+		return  mSlidingMenu;
 	}
 }

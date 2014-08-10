@@ -5,4 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
      <dimen name="sliding_menu_height">44dp</dimen>
+     <!-- The default gap between components in a layout. -->
+    <dimen name="default_gap">16dip</dimen>
 </resources>

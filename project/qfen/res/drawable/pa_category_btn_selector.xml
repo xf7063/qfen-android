@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+android:state_pressed 与 android:state_focused=""一起用感觉无效
+学习：
+1：也简单说说Button背景的Selector配置 - > http://zhiweiofli.iteye.com/blog/1423670
+android的Button控件在应用里是十分常见的，功能也十分强大！但是想把它做得漂亮一点，交互效果好一点，就需要一点技巧 使用selector，进行便利的UX效果配置，selector使用的方法也很简单，网上一大堆教程，这里就不多说了。
+这篇文章，主要是想分享一下自己遇到的问题：Button的背景使用selector配置问题。
+以下是一段能正常使用的selector xml代码：
+2:android selector 开始自定义样式 -> http://www.cnblogs.com/leehongee/p/3323900.html
+3:Android中的Selector的用法 -> http://blog.csdn.net/shakespeare001/article/details/7788400/
+4:android shape的使用
+shape用于设定形状，可以在selector，layout等里面使用，有6个子标签，各属性如下： -> http://www.cnblogs.com/cyanfei/archive/2012/07/27/2612023.html
+5:解决了个重要问题 ：<item> tag requires a 'drawable' attribute or child tag defining a drawab
+ http://blog.csdn.net/zhufuing/article/details/20134255
+异常日志:
+Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #3: <item> tag requires a 'drawable' attribute or child tag defining a drawable
+产生原因:
+      我的一个button按钮的background属性中设置成"@color/button_text_selector",按照异常来说，这个background这个属性的值必须是drawable类型的，不能是color类型。
+drawable&color:
+本来我是想给button设置一个selector，让按钮背景正常状态下是一个颜色值，点击状态下背景又是另外一个值，但是没想到报了这样一个错误，既然background只能设置为drawable，那我就写一个drawable的selector给button设置不同状态下的颜色值,如下所示:
+
+6：用selector状态列表美化Button -> http://book.51cto.com/art/201211/363337.htm
+
+ -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 非触摸模式下获得焦点并单击时的背景图片 -->
+    <item android:drawable="@drawable/pa_category_focus_btn" android:state_pressed="true"/>
+    <!-- 触摸模式下单击时的背景图片 -->
+    <item android:drawable="@drawable/pa_category_default_btn"   android:state_pressed="false"/>
+
+</selector>

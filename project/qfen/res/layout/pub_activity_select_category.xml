@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" xmlns:app1="http://schemas.android.com/apk/res/com.qfen.mobile">
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" 
+	    >
+
+    	<include
+    	    layout="@layout/pub_activity_select_type_header" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="top|center_horizontal"
+	    android:layout_weight="4"
+	    >
+
+        <android.support.v7.widget.GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_gravity="center"
+            app:alignmentMode="alignBounds"
+            app:columnCount="3"
+            app:rowCount="3" >
+
+            <Button
+                android:id="@+id/one"
+                android:text="演出电影" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/two"
+                android:text="吃喝玩乐" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/three"
+                android:text="汽车房产" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/four"
+                android:text="公益环保" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/five"
+                android:text="派对夜店" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/six"
+                android:text="体育户外 " 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/seven"
+                android:text="招募其它" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/eight"
+                android:text="商场折扣" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+
+            <Button
+                android:id="@+id/nine"
+                android:text="商务会展" 
+                android:layout_margin="5dp"
+                android:focusable="true"
+                android:background="@drawable/pa_category_btn_selector"/>
+            
+        </android.support.v7.widget.GridLayout>
+
+    </LinearLayout>
+    
+</LinearLayout>

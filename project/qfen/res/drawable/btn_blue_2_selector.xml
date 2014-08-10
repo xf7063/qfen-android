@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 触摸模式下单击时的背景图片 -->
+    <item android:state_pressed="false">
+		<shape>
+		    <!-- 填充的颜色 -->
+			<solid android:color="#01b5ff" />
+		    <stroke android:width="2dip" android:color="#01b5ff" />
+		</shape>
+	</item>
+    <!-- 非触摸模式下获得焦点并单击时的背景图片 -->
+    <item android:state_pressed="true">
+        <shape>
+		    <!-- 填充的颜色 -->
+			<solid android:color="#009393" />
+		    <stroke android:width="2dip" android:color="#009393" />
+		</shape>
+	</item>
+</selector>

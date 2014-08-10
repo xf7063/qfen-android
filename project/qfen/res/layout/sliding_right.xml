@@ -4,43 +4,406 @@
     android:layout_height="fill_parent"
     android:background="@color/side_menu_bg_color"
     android:orientation="vertical" >
-    <TextView
-        android:id="@+id/menu_host_level_all"
+    <!-- 头像显示区域 -->
+    <LinearLayout
+        android:id="@+id/right_menuitem_head_layout"
         android:layout_width="fill_parent"
-        android:layout_height="47dp"
-        android:background="@drawable/sliding_msg_recharge_bg"
-        android:text="全部" />
+        android:layout_height="120dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/head" />
+
+        <RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:gravity="left"
+			android:paddingLeft="10dp">
+			<TextView
+	            android:id="@+id/btn_login"
+	            android:gravity="center"
+	            android:layout_width="70dp"
+	            android:layout_height="30dp"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ff5400"
+	            android:background="@drawable/right_menu_text"
+	            android:text="点击登录" />
+		</RelativeLayout>
+
+        <RelativeLayout 
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:gravity="left"
+				android:paddingLeft="10dp">
+			<TextView
+	            android:id="@+id/btn_register"
+	            android:gravity="center"
+	            android:layout_width="70dp"
+	            android:layout_height="30dp"
+	            android:layout_centerVertical="true"
+	            android:textColor="#ff5400"
+	            android:background="@drawable/right_menu_text"
+	            android:text="点击注册" />
+		</RelativeLayout>
+	</LinearLayout>
+	
+	<!-- “分享”菜单项 -->
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/sliding_level_bg"
-        android:gravity="center_vertical" >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/sliding_level_icon" />
-        <TextView
-            style="@style/sliding_menu_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="按等级观看" />
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_share_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_share"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_share"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="分享"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:id="@+id/menu_host_level_1"
-        style="@style/sliding_right_menu_text"
-        android:text="皇冠" />
-    <TextView
-        android:id="@+id/menu_host_level_2"
-        style="@style/sliding_right_menu_text"
-        android:text="钻石" />   
-    <TextView
-        android:id="@+id/menu_host_level_3"
-        style="@style/sliding_right_menu_text"
-        android:text="星级" />
-    <TextView
-        android:id="@+id/menu_host_level_4"
-        style="@style/sliding_right_menu_text"
-        android:text="红心" />
+    
+	<!-- “活动”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_activity_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_activity"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_activity"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="活动"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
+    
+	<!-- “优惠券”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_discount_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_discount"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_discount"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="优惠券"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
+    
+    <!-- “帐户余额”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_residualamount_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_residualamount"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_residualamount"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="帐户余额"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
+    
+    <!-- “主办方”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_sponsor_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_sponsor"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_sponsor"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="主办方"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
+    
+    <!-- “帐户设置”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_accountsetting_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_accountsetting"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_accountsetting"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="帐户设置"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
+    
+    <!-- “常见问题”菜单项 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/menuitem_splitline_1"
+        android:paddingTop="0.1px" >
+
+	    <LinearLayout
+	        android:id="@+id/right_menuitem_faq_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@drawable/menuitem_splitline_2"
+	        android:gravity="center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/icon_right_menuitem_faq"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_right_menuitem_faq"
+	            android:layout_marginLeft="15dp" />
+	
+	        <RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:gravity="center_vertical"
+				android:padding="10dp">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:textColor="#188289"
+					android:text="常见问题"
+					/>
+			</RelativeLayout>
+	
+	        <RelativeLayout 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:gravity="right"
+					android:paddingRight="20dp">
+				<ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/icon_arraw_right"
+		            android:layout_centerVertical="true"
+		            />
+			</RelativeLayout>
+	    </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

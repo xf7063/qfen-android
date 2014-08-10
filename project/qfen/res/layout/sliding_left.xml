@@ -80,7 +80,7 @@
         android:paddingTop="0.1px" 
         >
 	    <LinearLayout
-	        android:id="@+id/left_menuitem_fjq_layout"
+	        android:id="@+id/left_menuitem_fjj_layout"
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:gravity="center_vertical"
@@ -88,10 +88,10 @@
 	        >
 	
 	        <ImageView
-	            android:id="@+id/icon_left_menuitem_fjq"
+	            android:id="@+id/icon_left_menuitem_fjj"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:src="@drawable/icon_left_menuitem_fjq"
+	            android:src="@drawable/icon_left_menuitem_fjj"
 	            android:layout_marginLeft="15dp" />
 	
 	        <RelativeLayout
@@ -189,8 +189,8 @@
 	        android:layout_height="fill_parent"
 	        android:gravity="center_vertical"
 	        android:background="@drawable/menuitem_splitline_2"
+	        android:orientation="horizontal"
 	        >
-
 	        <EditText
 	            android:id="@+id/left_menuitem_ss_edit_text"
 	            android:layout_width="fill_parent"
@@ -203,7 +203,6 @@
 	            android:drawablePadding="10dp"
 	            android:hint="请输入搜索内容"
 	            android:paddingLeft="10dp" />
-
 	    </LinearLayout>
     </LinearLayout>
 

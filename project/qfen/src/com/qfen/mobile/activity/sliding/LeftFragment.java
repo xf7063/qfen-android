@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import com.qfen.mobile.R;
 import com.qfen.mobile.activity.MainActivity;
 import com.qfen.mobile.activity.base.BaseSlidingFragment;
+import com.qfen.mobile.activity.fragments.MainPageFragment;
 import com.qfen.mobile.ui.FollowFragment;
-import com.qfen.mobile.ui.MainHallFragment;
 
 /**
  * 左侧菜单的Fragment
@@ -22,11 +22,11 @@ import com.qfen.mobile.ui.MainHallFragment;
 public class LeftFragment extends BaseSlidingFragment {
 	
 	//左侧菜单项对应的Fragment数组，和leftMenuItemLayout变量中的序号对应
-	public final static Class[] FRAGMENTS_CLASSES = { MainHallFragment.class, FollowFragment.class,FollowFragment.class};
+	public final static Class[] FRAGMENTS_CLASSES = { MainPageFragment.class, FollowFragment.class,FollowFragment.class};
 	//左侧菜单项布局数组 和 FRAGMENTS_CLASSES 数组变量序号对应
-	private View[] leftMenuItemLayout;
+	private View[] mLeftMenuItemLayout;
 	//保存当前被选中的菜单项序号
-	private int currentLeftMenuItemIndex = -1;
+	private int mCurrentLeftMenuItemIndex = -1;
 	
 	private Bitmap mLoadingBitmap;
 
@@ -36,23 +36,23 @@ public class LeftFragment extends BaseSlidingFragment {
 	
 		setContentView(R.layout.sliding_left);
 		setData();
-		changeMenuByClass(MainHallFragment.class);
+		changeMenuByClass(MainPageFragment.class);
 	}
 
 	@Override
 	public void initViews() {
-		leftMenuItemLayout = new View[] { 
+		mLeftMenuItemLayout = new View[] { 
 				findViewById(R.id.left_menuitem_home_layout),
-				findViewById(R.id.left_menuitem_fjq_layout),
+				findViewById(R.id.left_menuitem_fjj_layout),
 				findViewById(R.id.left_menuitem_qhd_layout)};
 	}
 
 	@Override
 	public void addListener() {
-		for (int i = 0; i < leftMenuItemLayout.length; i++) {
+		for (int i = 0; i < mLeftMenuItemLayout.length; i++) {
 			//设置菜单项布局变量在leftMenuItemLayout数组中的序号到菜单项布局变量中的tag中去。可以理解setTag是android中view组件存数据的地方
-			leftMenuItemLayout[i].setTag(i);
-			leftMenuItemLayout[i].setOnClickListener(new OnClickListener() {
+			mLeftMenuItemLayout[i].setTag(i);
+			mLeftMenuItemLayout[i].setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					//当菜单项布局有click事件发生时，拿出存到菜单项布局变量中的内容，这里用getTag()，因为存的是序号，所以拿出来的内容就是菜单项序号值，然后根据该值作相应的操作
@@ -75,8 +75,8 @@ public class LeftFragment extends BaseSlidingFragment {
 	@SuppressWarnings("unchecked")
 	private void changeMenuByIndex(int index) {
 		Class<? extends Fragment> clazz = null;
-		if (currentLeftMenuItemIndex != index) {
-			clearMenu();
+		if (mCurrentLeftMenuItemIndex != index) {
+			clearMenu(mCurrentLeftMenuItemIndex);
 			setMenuChecked(index);
 		}
 		
@@ -84,8 +84,6 @@ public class LeftFragment extends BaseSlidingFragment {
 		clazz = FRAGMENTS_CLASSES[index];
 		//调用MainActivity中的switchCenterFragment方法，显示被选中菜单项对应的frament
 		getFragmentActivity(MainActivity.class).switchCenterFragment(clazz);
-		//保存被选中菜单项序号到currentLeftMenuItemIndex变量
-		currentLeftMenuItemIndex = index;
 	}
 
 	/**
@@ -104,9 +102,9 @@ public class LeftFragment extends BaseSlidingFragment {
 	 * 清除菜单项布局上被选中的状态，或者或复到默认状态
 	 */
 	@SuppressWarnings("deprecation")
-	private void clearMenu() {
-		for (int i = 1; i <= leftMenuItemLayout.length; i++) {
-			leftMenuItemLayout[i-1].setBackgroundDrawable(null);
+	private void clearMenu(int index) {
+		if(index >= 0 && index < mLeftMenuItemLayout.length) {
+			mLeftMenuItemLayout[index].setBackgroundDrawable(null);
 		}
 	}
 
@@ -115,7 +113,9 @@ public class LeftFragment extends BaseSlidingFragment {
 	 * @param index
 	 */
 	private void setMenuChecked(int index) {
-		leftMenuItemLayout[index].setBackgroundResource(R.color.side_menuitem_checked_color);
+		mLeftMenuItemLayout[index].setBackgroundResource(R.color.side_menuitem_checked_color);
+		//保存被选中菜单项序号到currentLeftMenuItemIndex变量
+		mCurrentLeftMenuItemIndex = index;
 	}
 
 

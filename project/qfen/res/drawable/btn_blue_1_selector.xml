@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+android LinearLayout设置selector不起作用解决
+设置方法 ： android:background="@drawable/fen_selector"
+如果只有这个的话，是不起作用的。还必须加上： android:clickable="true"
+ -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 触摸模式下单击时的背景图片 -->
+    <item android:state_pressed="false">
+		<shape>
+		    <!-- 填充的颜色 -->
+			<solid android:color="#02aeac" />
+		    <stroke android:width="2dip" android:color="#02aeac" />
+		    <!-- android:radius 弧形的半径 -->
+			<corners  android:radius="5dp" />
+		</shape>
+	</item>
+    <!-- 非触摸模式下获得焦点并单击时的背景图片 -->
+    <item android:state_pressed="true">
+        <shape>
+		    <!-- 填充的颜色 -->
+			<solid android:color="#006400" />
+		    <stroke android:width="2dip" android:color="#006400" />
+		    <!-- android:radius 弧形的半径 -->
+			<corners  android:radius="5dp" />
+		</shape>
+	</item>
+</selector>

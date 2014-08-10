@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/asa_relativelayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#74B9C1" >
+
+		<Button 
+	        android:id="@+id/asa_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_back_selector"
+	        />
+		
+        <TextView
+            android:id="@+id/asa_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:text="账号设置" 
+            android:textSize="18dp" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/bg_cut_01"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- 以下android:scaleType="center" 很重要不然图片和图片背景没法一起显示 -->
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/head_test" 
+            android:scaleType="center"
+            android:background="@drawable/head_bg_1"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#188289"
+            android:textSize="18dp"
+            android:text="小可爱布丁" />
+        
+	</LinearLayout>
+	
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="top"
+        android:background="#ffffff"
+        >
+        <!-- 姓名 -->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="姓名" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/imageView2"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="小可爱布丁"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+        <!-- 姓别 -->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="姓别 " />
+
+            <ImageView
+                android:id="@+id/asa_iv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/asa_iv_sex"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="女"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+        <!-- 商圈 -->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="商圈 " />
+
+            <ImageView
+                android:id="@+id/asa_iv_sq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/asa_iv_sq"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="成都市成华区建设路"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+        <!-- 手机号-->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="手机号 " />
+
+            <ImageView
+                android:id="@+id/asa_iv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/asa_iv_phone"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="点击绑定手机号"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+        <!-- 年龄-->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="年龄 " />
+
+            <ImageView
+                android:id="@+id/asa_iv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/asa_iv_age"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="24"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+        <!-- 工作-->
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:background="#ffffff"
+	        android:padding="9dp"
+	        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#333333"
+                android:text="工作 " />
+
+            <ImageView
+                android:id="@+id/asa_iv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_arraw_right_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/asa_iv_job"
+                android:textColor="#7a7e7f" 
+                android:layout_centerInParent="true"
+                android:text="无业游民"
+                />
+		</RelativeLayout>
+		<View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_centerInParent="true"
+	        android:background="?android:attr/listDivider" />
+	</LinearLayout>
+	
+    <Button 
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_red_1_selector"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:text="退出登录"
+        />
+    	
+</LinearLayout>

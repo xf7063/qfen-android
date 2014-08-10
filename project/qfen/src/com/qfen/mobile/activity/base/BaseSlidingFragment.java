@@ -22,8 +22,8 @@ public class BaseSlidingFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// 缓存的rootView�?��判断是否已经被加过parent�?
-		// 如果有parent�?��从parent删除，要不然会发生这个rootview已经有parent的错误�?
+		// 缓存的rootView 判断是否已经被加过parent
+		// 如果有parent 从parent删除，要不然会发生这个rootview已经有parent的错误
 		ViewGroup parent = (ViewGroup) mRootView.getParent();
 		if (parent != null) {
 			parent.removeView(mRootView);
@@ -38,7 +38,9 @@ public class BaseSlidingFragment extends BaseFragment {
 		addListener();
 	}
 
-	
+	/**
+	 * 初始化菜单面板中的组件
+	 */
 	public void initViews() {
 
 	}
@@ -50,6 +52,9 @@ public class BaseSlidingFragment extends BaseFragment {
 		return mRootView.findViewById(id);
 	}
 
+	/**
+	 * 设置相应的监听器
+	 */
 	public void addListener() {
 
 	}

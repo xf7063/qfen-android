@@ -16,9 +16,6 @@ import com.qfen.mobile.ui.ui2.FirstFragment;
 import com.qfen.mobile.ui.ui2.SecondFragment;
 import com.qfen.mobile.ui.ui2.ThirdFragment;
 
-
-
-
 public class MainHallFragment extends BaseSlidingFragment implements OnClickListener {
 	public static final int LEVEL_ALL = -1;// 全部
 	public static final int LEVEL_HEART = 0;// 红心

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/aa_relativelayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#74B9C1" >
+
+        <ImageView
+            android:id="@+id/aa_iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:text="活动" 
+            android:textSize="18dp" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#D4ECEA" >
+        <TextView
+            android:id="@+id/aa_text1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="我的活动"
+            android:textSize="16dp"
+            android:textColor="@color/aa_focus_text"
+             />
+
+        <TextView
+            android:id="@+id/aa_text2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="我收藏的活动"
+            android:textSize="16dp"
+            android:textColor="@color/aa_default_text"
+             />
+
+        <TextView
+            android:id="@+id/aa_text3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="我参与的活动"
+            android:textSize="16dp"
+            android:textColor="@color/aa_default_text"
+             />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/cursor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:src="@drawable/cursor_bar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="#000000"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+    <LinearLayout
+        android:id="@+id/aa_linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#E9F0F3" >
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:gravity="center"
+	        android:layout_weight="1">
+
+	        <Button
+	            android:id="@+id/btn_pub_activity"
+	            android:layout_width="130dp"
+	            android:layout_height="40dp"
+	            android:background="@drawable/btn_yellow_1_selector"
+	            android:text="发布活动"
+	            android:textSize="16dp"
+	            android:textColor="#FFFFFF" />
+	        
+	    </LinearLayout>
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:gravity="center"
+	        android:layout_weight="1">
+
+	        <Button
+	            android:id="@+id/button2"
+	            android:layout_width="130dp"
+	            android:layout_height="40dp"
+	            android:textColor="#FFFFFF"
+	            android:textSize="16dp"
+	            android:background="@drawable/btn_green_1_selector"
+	            android:text="发布优惠券" />
+	        
+	    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
