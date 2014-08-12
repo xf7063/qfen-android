@@ -2,39 +2,37 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 触摸模式下单击时的背景图片 -->
     <item android:state_pressed="false">
-		<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+		<layer-list>
 		    <!-- 连框颜色值 -->
 		    <item>
 		        <shape>
-		            <solid android:color="#ff0000" />
+		            <solid android:color="#0b7fd9" />
 		        </shape>
 		    </item>
 		    <!-- 主体背景颜色值 -->
-		    <item android:bottom="5dp">
-		        <shape>
-		            <solid android:color="#ffffff" />
-		        </shape>
-		    </item>
-		</layer-list>
-	</item>
-    <!-- 非触摸模式下获得焦点并单击时的背景图片 -->
-    <item android:state_pressed="true">
-        <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-		    <!-- 连框颜色值 -->
-		    <item>
-		        <shape>
-		            <solid android:color="#00ff00" />
-		        </shape>
-		    </item>
-		    <!-- 主体背景颜色值 -->
-		    <item
-		        android:bottom="2dp" >
+		    <item android:bottom="2dp">
 		        <shape>
 		            <solid android:color="#ffffff" />
 		            <padding android:bottom="1dp"  />
 		        </shape>
 		    </item>
-		
+		</layer-list>
+	</item>
+    <item android:state_pressed="true">
+		<layer-list>
+		    <!-- 连框颜色值 -->
+		    <item>
+		        <shape>
+		            <solid android:color="#FF0033" />
+		        </shape>
+		    </item>
+		    <!-- 主体背景颜色值 -->
+		    <item android:bottom="2dp">
+		        <shape>
+		            <solid android:color="#ffffff" />
+		            <padding android:bottom="1dp"  />
+		        </shape>
+		    </item>
 		</layer-list>
 	</item>
 </selector>

@@ -20,8 +20,8 @@ android LinearLayout设置selector不起作用解决
     <item android:state_pressed="true">
         <shape>
 		    <!-- 填充的颜色 -->
-			<solid android:color="#009933" />
-		    <stroke android:width="2dip" android:color="#009933" />
+			<solid android:color="#990033" />
+		    <stroke android:width="2dip" android:color="#990033" />
 		    <!-- android:radius 弧形的半径 -->
 			<corners  android:radius="5dp" />
 		</shape>

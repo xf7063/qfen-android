@@ -2,6 +2,7 @@ package com.qfen.mobile.activity.sliding;
 
 import java.util.Arrays;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.qfen.mobile.R;
+import com.qfen.mobile.activity.AccountBalancesActivity;
+import com.qfen.mobile.activity.AccountSettingActivity;
+import com.qfen.mobile.activity.ActivityActivity;
+import com.qfen.mobile.activity.FjjActivity;
 import com.qfen.mobile.activity.MainActivity;
 import com.qfen.mobile.activity.base.BaseSlidingFragment;
 import com.qfen.mobile.activity.fragments.MainPageFragment;
+import com.qfen.mobile.common.ActivityHelper;
 import com.qfen.mobile.ui.FollowFragment;
 
 /**
@@ -59,6 +65,8 @@ public class LeftFragment extends BaseSlidingFragment {
 					int index = (Integer) v.getTag();
 					//根据被选中菜单项序号做相应的功能操作
 					changeMenuByIndex(index);
+					
+					dispatchMenuItemAction(index);
 				}
 			});
 		}
@@ -127,5 +135,11 @@ public class LeftFragment extends BaseSlidingFragment {
 		}
 
 		super.onDestroy();
+	}
+	
+	private void dispatchMenuItemAction(int index) {
+		if(index == 1) {
+			ActivityHelper.switchActivity(this.getActivity(),FjjActivity.class);
+		}
 	}
 }

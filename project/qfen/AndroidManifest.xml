@@ -40,6 +40,9 @@
         <activity
             android:name="com.qfen.mobile.activity.AccountBalancesActivity">
         </activity>
+        <activity
+            android:name="com.qfen.mobile.activity.FjjActivity">
+        </activity>
     </application>
 
 </manifest>
