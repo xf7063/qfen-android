@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/head_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:background="#045b5a" >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/btn_pc" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="趣活动"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/textView1"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/btn_mainpage_list" />
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#D4ECEA" >
+        <TextView
+            android:id="@+id/aa_text1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="活动分类"
+            android:textSize="16dp"
+            android:textColor="@color/aa_focus_text"
+             />
+
+        <TextView
+            android:id="@+id/aa_text2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="商圈查询"
+            android:textSize="16dp"
+            android:textColor="@color/aa_default_text"
+             />
+
+        <TextView
+            android:id="@+id/aa_text3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="时间排序"
+            android:textSize="16dp"
+            android:textColor="@color/aa_default_text"
+             />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <!-- <ScrollView  
+		    android:id="@+id/ScrollView"  
+		    android:layout_width="fill_parent"  
+		    android:layout_height="fill_parent"  
+		    android:background="#FFF4F4F4"  
+		    android:scrollbars="vertical" 
+		    android:fillViewport="true">  
+		  
+		    <LinearLayout  
+		        android:id="@+id/LinearLayout"  
+		        android:gravity="center_horizontal"  
+		        android:background="#FFF4F4F4"  
+		        android:layout_width="fill_parent"  
+		        android:layout_height="fill_parent"  
+		        android:orientation="vertical" >  
+		        原： <ListView> <com.qfen.mobile.view.NoScrollListView>  
+		        <ListView  
+		            android:id="@+id/listView1"  
+		            android:layout_width="fill_parent"  
+		            android:layout_height="fill_parent"   
+		            android:dividerHeight="0.0dip"  
+		            android:fadingEdge="none"  
+		            android:cacheColorHint="#FFF4F4F4"/>
+		              
+		    </LinearLayout>  
+		  
+		</ScrollView> -->
+		<ListView  
+		            android:id="@+id/listView1"  
+		            android:layout_width="fill_parent"  
+		            android:layout_height="fill_parent"   
+		            android:dividerHeight="0.0dip"  
+		            android:fadingEdge="none"  
+		            android:cacheColorHint="#FFF4F4F4"/>
+    </RelativeLayout>
+    
+</LinearLayout>

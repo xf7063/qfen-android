@@ -87,6 +87,7 @@ public class MainActivity extends BaseFragmentActivity {
 	 * @param clazz
 	 */
 	public void switchCenterFragment(Class<? extends Fragment> clazz) {
+		if(clazz == null) return;
 		try {
 			if (mSlidingMenu == null) {
 				removeAllFragments();

@@ -2,7 +2,6 @@ package com.qfen.mobile.activity.sliding;
 
 import java.util.Arrays;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,13 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.qfen.mobile.R;
-import com.qfen.mobile.activity.AccountBalancesActivity;
-import com.qfen.mobile.activity.AccountSettingActivity;
-import com.qfen.mobile.activity.ActivityActivity;
 import com.qfen.mobile.activity.FjjActivity;
 import com.qfen.mobile.activity.MainActivity;
 import com.qfen.mobile.activity.base.BaseSlidingFragment;
 import com.qfen.mobile.activity.fragments.MainPageFragment;
+import com.qfen.mobile.activity.fragments.QhdFragment;
 import com.qfen.mobile.common.ActivityHelper;
 import com.qfen.mobile.ui.FollowFragment;
 
@@ -28,7 +25,7 @@ import com.qfen.mobile.ui.FollowFragment;
 public class LeftFragment extends BaseSlidingFragment {
 	
 	//左侧菜单项对应的Fragment数组，和leftMenuItemLayout变量中的序号对应
-	public final static Class[] FRAGMENTS_CLASSES = { MainPageFragment.class, FollowFragment.class,FollowFragment.class};
+	public final static Class[] FRAGMENTS_CLASSES = { MainPageFragment.class, null,QhdFragment.class};
 	//左侧菜单项布局数组 和 FRAGMENTS_CLASSES 数组变量序号对应
 	private View[] mLeftMenuItemLayout;
 	//保存当前被选中的菜单项序号
