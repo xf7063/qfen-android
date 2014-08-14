@@ -1,5 +1,7 @@
 package com.qfen.mobile.activity.fragments;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +10,20 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -29,6 +43,7 @@ import android.widget.TextView;
 import com.qfen.mobile.R;
 import com.qfen.mobile.activity.MainActivity;
 import com.qfen.mobile.activity.base.BaseSlidingFragment;
+import com.qfen.mobile.common.HttpRequestUtil;
 import com.qfen.mobile.view.adapter.ListViewAdapter;
 
 public class MainPageFragment extends BaseSlidingFragment implements OnClickListener {
@@ -36,7 +51,7 @@ public class MainPageFragment extends BaseSlidingFragment implements OnClickList
 	private List<ImageView> imageViews; // 滑动的图片集合
 
 	private String[] titles; // 图片标题
-	private int[] imageResId; // 图片ID
+	private String[] imageResId; // 图片ID
 	private List<View> dots; // 图片标题正文的那些点
 
 	private TextView tv_title;
@@ -45,49 +60,42 @@ public class MainPageFragment extends BaseSlidingFragment implements OnClickList
 	// An ExecutorService that can schedule commands to run after a given delay,
 	// or to execute periodically.
 	private ScheduledExecutorService scheduledExecutorService;
-
-	// 切换当前显示的图片
-	private Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			Log.v("handleMessage", msg.toString());
-			viewPager.setCurrentItem(currentItem, true);// 切换当前显示的图片
-		};
-	};
 	
+	private Handler netDataHandler = null;
+	//更改滚动标题
+	public static final int MODIFY_TV_TITLE = 0x000001;
+	//初始化滚动图片
+	public static final int INIT_VIEW_PAGER = 0x000002;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_main);
 		
-		imageResId = new int[] { R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
-		titles = new String[imageResId.length];
-		titles[0] = "巩俐不低俗，我就不能低俗";
-		titles[1] = "扑树又回来啦！再唱经典老歌引万人大合唱";
-		titles[2] = "揭秘北京电影如何升级";
-		titles[3] = "乐视网TV版大派送";
-		titles[4] = "热血屌丝的反杀";
-
-		imageViews = new ArrayList<ImageView>();
-
-		// 初始化图片资源
-		for (int i = 0; i < imageResId.length; i++) {
-			ImageView imageView = new ImageView(this.getActivity());
-			imageView.setImageResource(imageResId[i]);
-			imageView.setScaleType(ScaleType.CENTER_CROP);
-			imageViews.add(imageView);
-		}
-
-		dots = new ArrayList<View>();
-		dots.add(findViewById(R.id.v_dot0));
-		dots.add(findViewById(R.id.v_dot1));
-		dots.add(findViewById(R.id.v_dot2));
-		dots.add(findViewById(R.id.v_dot3));
-		dots.add(findViewById(R.id.v_dot4));
+		netDataHandler = new Handler() {
+            @Override  
+            public void handleMessage(Message msg) {  
+                if(msg.what == MODIFY_TV_TITLE) {
+                	//处理数据
+                	tv_title = (TextView) findViewById(R.id.tv_title);
+                	String title = msg.getData().getString("title");
+                	tv_title.setText(title);
+                }
+                if(msg.what == INIT_VIEW_PAGER) {
+                	initViewPager();
+                }
+                super.handleMessage(msg);  
+            }  
+        };  
+		//开启获取数据线程
+		new Thread(getDataRunnable).start();
 		
-		tv_title = (TextView) findViewById(R.id.tv_title);
-		tv_title.setText(titles[0]);//
-
+	}
+	
+	/**
+	 * 初始化滚动图片
+	 */
+	private void initViewPager(){
 		viewPager = (ViewPager) findViewById(R.id.vp);
 		PagerAdapter pageAdapter = new PagerAdapter() {
 			@Override
@@ -131,10 +139,110 @@ public class MainPageFragment extends BaseSlidingFragment implements OnClickList
 
 			}
 		};
-		viewPager.setAdapter(pageAdapter);//设置填充ViewPager页面的适配器
+		//设置填充ViewPager页面的适配器
+		viewPager.setAdapter(pageAdapter);
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
 	}
+	
+	
+	/**
+	 * 获取网络数据
+	 * @param url
+	 * @return
+	 * @throws Exception
+	 */
+	private String getContent(String url) throws Exception {
+		StringBuilder sb = new StringBuilder();
+		HttpClient client = new DefaultHttpClient();
+		HttpParams httpParams = client.getParams();
+
+		// 设置网络超时参数
+		HttpConnectionParams.setConnectionTimeout(httpParams, 3000);
+		HttpConnectionParams.setSoTimeout(httpParams, 5000);
+		HttpResponse response = client.execute(new HttpGet(url));
+		HttpEntity entity = response.getEntity();
+		if (entity != null) {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					entity.getContent(), "UTF-8"), 8192);
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			reader.close();
+		}
+
+		return sb.toString();
+	}
+	
+	
+	public void getData(){
+		//String path = "http://111.9.120.21/scmuseum/scmweb/interaction/scm_interaction.php?scm_dopost=scm_interaction&scm_method=GetInteractionIndexFlipPic";
+		String path = "http://qfen.net/Jikou.aspx?scm_dopost=scm_interaction";
+		//String path = "http://qfen.net/Jikou.aspx?scm_dopost=scm_exhibition&scm_method=GetExhibitionIndexList&start_num=0&count=10";
+		try {
+			String body = getContent(path);
+			JSONObject jsonObj = new JSONObject(body);
+			JSONArray array = jsonObj.getJSONArray("data");
+			imageResId = new String[array.length()];
+	        titles = new String[array.length()];
+			for (int i = 0; i < array.length(); i++) {
+				JSONObject obj = array.getJSONObject(i);
+				imageResId[i] = obj.getString("litpic");
+				titles[i] = obj.getString("Title");
+			}
+			
+			imageViews = new ArrayList<ImageView>();
+			// 初始化图片资源
+			for (int i = 0; i < imageResId.length; i++) {
+				ImageView imageView = new ImageView(this.getActivity());
+				Bitmap bitmap = HttpRequestUtil.getHttpBitmap(imageResId[i]);
+				imageView.setImageBitmap(bitmap);
+				imageView.setScaleType(ScaleType.CENTER_CROP);
+				imageViews.add(imageView);
+			}
+
+			dots = new ArrayList<View>();
+			dots.add(findViewById(R.id.v_dot0));
+			dots.add(findViewById(R.id.v_dot1));
+			dots.add(findViewById(R.id.v_dot2));
+			dots.add(findViewById(R.id.v_dot3));
+			dots.add(findViewById(R.id.v_dot4));
+			
+			//更改标题 begin
+			tv_title = (TextView) findViewById(R.id.tv_title);
+			Message msg = new Message();
+			Bundle data = new Bundle();
+			data.putString("title", titles[0]);
+			msg.setData(data);
+            msg.what = MODIFY_TV_TITLE;
+            netDataHandler.sendMessage(msg);
+            //更改标题 end
+            
+            //初始化图片 begin
+            msg = new Message();
+            msg.what = INIT_VIEW_PAGER;
+            netDataHandler.sendMessage(msg);
+            //初始化图片 end
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	Runnable getDataRunnable = new Runnable(){
+	    @Override
+	    public void run() {
+	        getData();
+	    }
+	};
+	
+	// 切换当前显示的图片
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			Log.v("handleMessage", msg.toString());
+			viewPager.setCurrentItem(currentItem, true);// 切换当前显示的图片
+		};
+	};
 	
 	@Override
 	public void onStart() {
@@ -150,7 +258,6 @@ public class MainPageFragment extends BaseSlidingFragment implements OnClickList
 		scheduledExecutorService.shutdown();
 		super.onStop();
 	}
-	
 	
 	/**
 	 * 换行切换任务
@@ -287,20 +394,6 @@ public class MainPageFragment extends BaseSlidingFragment implements OnClickList
 		});
 	}
 	
-//	String[] nameList = {"Miley Cyruc","Alice Keys","Jewel","Dublin","Kelly Clarkson",  
-//            "Mariah Carey","Sheen","Adele","Avril Lavigne","Taylor Swift"};  
-	String[] nameList = {
-			"峨眉山温泉酒店旅游套票",
-			"大型山水实景演出《道解都江堰》",
-			"中国泰迪熊博物馆",
-			"成都海宁皮革城跨年大让利",
-			"感恩时节成都欢乐谷日场全价门票",  
-            "领馆国际城 春季大回馈",
-            "2014成都（花舞人间）郁金香节",
-            "红楼梦境-2014郑绪岚成都演唱会",
-            "地音乐课堂（GMC）同城学习交流活动组织者",
-            "【树舍出品】魔界体验——magic分享沙龙"};  
-
 	public void initListView() {
 		ListView lv = (ListView) findViewById(R.id.listView1);  
 	      

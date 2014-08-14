@@ -12,6 +12,12 @@ public class ActivityHelper {
 		packageContext.startActivity(intent);
 	}
 	
+	/**
+	 * 切换activity
+	 * @param packageContext
+	 * @param target
+	 * @param overPakageContext
+	 */
 	public static void switchActivity(Context packageContext, Class<?> target,boolean overPakageContext) {
 		Intent intent = null;
 		intent = new Intent(packageContext, target);
